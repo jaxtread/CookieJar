@@ -13,8 +13,8 @@
 [ext_resource path="res://BlueArea.gd" type="Script" id=11]
 [ext_resource path="res://WhiteArea.gd" type="Script" id=12]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 23.5382
+[sub_resource type="CircleShape2D" id=3]
+radius = 24.2303
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 54.75, 68.1519 )
@@ -29,22 +29,20 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player" type="RigidBody2D" parent="."]
+[node name="Player" type="Node2D" parent="."]
 position = Vector2( 231.146, 181.079 )
-gravity_scale = 0.0
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="Player"]
 position = Vector2( 2.24837, -0.0630951 )
 scale = Vector2( 0.16429, 0.161053 )
 texture = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="Area2D" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
 position = Vector2( 2, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( -127.405, -77.8329 )
