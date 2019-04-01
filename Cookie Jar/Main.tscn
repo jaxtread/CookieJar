@@ -1,10 +1,23 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://pet_putt_graphics_pack/putting_green.png" type="Texture" id=1]
-[ext_resource path="res://pet_putt_graphics_pack/parrot.png" type="Texture" id=2]
+[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://pet_putt_graphics_pack/parrot.png" type="Texture" id=3]
+[ext_resource path="res://TextLabel1.gd" type="Script" id=4]
+[ext_resource path="res://go_modules/TopDownMovement.tscn" type="PackedScene" id=5]
+[ext_resource path="res://pet_putt_graphics_pack/wood_wall.png" type="Texture" id=6]
+[ext_resource path="res://pet_putt_graphics_pack/giraffe.png" type="Texture" id=7]
+[ext_resource path="res://pet_putt_graphics_pack/hippo.png" type="Texture" id=8]
+[ext_resource path="res://pet_putt_graphics_pack/panda.png" type="Texture" id=9]
+[ext_resource path="res://YellowArea.gd" type="Script" id=10]
+[ext_resource path="res://BlueArea.gd" type="Script" id=11]
+[ext_resource path="res://WhiteArea.gd" type="Script" id=12]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 23.5382
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 54.75, 68.1519 )
 
 [node name="Main" type="Node2D"]
 
@@ -17,11 +30,21 @@ __meta__ = {
 }
 
 [node name="Player" type="RigidBody2D" parent="."]
-position = Vector2( 743.574, 478.059 )
+position = Vector2( 231.146, 181.079 )
 gravity_scale = 0.0
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="Sprite" type="Sprite" parent="Player"]
+position = Vector2( 2.24837, -0.0630951 )
+scale = Vector2( 0.16429, 0.161053 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( 2, 0 )
+shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( -127.405, -77.8329 )
@@ -32,17 +55,124 @@ current = true
 [node name="TextLabel1" type="Label" parent="Player/CanvasLayer"]
 margin_left = 24.0
 margin_top = 5.0
-margin_right = 74.0
-margin_bottom = 23.0
+margin_right = 325.0
+margin_bottom = 46.0
 rect_scale = Vector2( 2, 2 )
-text = "Foyer"
+autowrap = true
+script = ExtResource( 4 )
 
-[node name="Sprite" type="Sprite" parent="Player"]
-position = Vector2( 2.24837, -0.0631027 )
-scale = Vector2( 0.16429, 0.161053 )
-texture = ExtResource( 2 )
+[node name="TopDownMovement" parent="Player" instance=ExtResource( 5 )]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2( 2, 0 )
-shape = SubResource( 1 )
+[node name="Wall" type="Sprite" parent="."]
+position = Vector2( 374.159, 424.746 )
+scale = Vector2( 1.32241, 5.54662 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Wall6" type="Sprite" parent="."]
+position = Vector2( 857, 427.984 )
+scale = Vector2( 1.1875, 5.74898 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Wall3" type="Sprite" parent="."]
+position = Vector2( 533, 425 )
+scale = Vector2( 1.125, 5.5 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Wall5" type="Sprite" parent="."]
+position = Vector2( 696, 425 )
+scale = Vector2( 1.125, 5.5 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Wall2" type="Sprite" parent="."]
+position = Vector2( 453, 353 )
+rotation = 1.5708
+scale = Vector2( 1.09375, 6.15625 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Wall7" type="Sprite" parent="."]
+position = Vector2( 779, 353 )
+rotation = 1.5708
+scale = Vector2( 1.09375, 6.15625 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Wall4" type="Sprite" parent="."]
+position = Vector2( 614, 493 )
+rotation = 1.5708
+scale = Vector2( 1.09375, 6.15625 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Ball1" type="Sprite" parent="."]
+position = Vector2( 443.482, 411.356 )
+scale = Vector2( 0.16, 0.16 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Ball2" type="Sprite" parent="."]
+position = Vector2( 612.168, 403.193 )
+scale = Vector2( 0.16, 0.16 )
+texture = ExtResource( 8 )
+
+[node name="Ball3" type="Sprite" parent="."]
+position = Vector2( 776.774, 422.239 )
+scale = Vector2( 0.16, 0.16 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="YellowArea" type="Area2D" parent="."]
+position = Vector2( 454.877, 407.056 )
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YellowArea"]
+position = Vector2( -1.16638, 46.654 )
+shape = SubResource( 2 )
+
+[node name="BlueArea" type="Area2D" parent="."]
+position = Vector2( 616.69, 349.778 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlueArea"]
+position = Vector2( -1.16638, 46.654 )
+shape = SubResource( 2 )
+
+[node name="WhiteArea" type="Area2D" parent="."]
+position = Vector2( 777.071, 405.625 )
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WhiteArea"]
+position = Vector2( -1.16638, 46.654 )
+shape = SubResource( 2 )
 
